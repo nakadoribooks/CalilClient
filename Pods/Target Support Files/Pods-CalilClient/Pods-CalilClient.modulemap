@@ -1,0 +1,6 @@
+framework module Pods_CalilClient {
+  umbrella header "Pods-CalilClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

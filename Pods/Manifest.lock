@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.4.0)
+  - ReSwift (3.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - ReSwift
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  ReSwift: f0255f4b4f2dacd12c5d97d34d13fc5dad6d6371
+
+PODFILE CHECKSUM: 064adcb767470d8263f3c37510a09be2b8c91f65
+
+COCOAPODS: 1.2.0
