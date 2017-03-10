@@ -11,8 +11,6 @@ import ReSwift
 // the reducer is responsible for evolving the application state based
 // on the actions it receives
 struct CalilReducer: Reducer {
-    typealias ReducerStateType = AppState
-    
     
     func handleAction(action: Action, state: AppState?) -> AppState {
         

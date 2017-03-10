@@ -27,7 +27,8 @@ class LibraryListViewController: UIViewController, StoreSubscriber, UITableViewD
         setupTableView()
         setupFooterView()
         
-        mainStore.dispatch(ActionCreator.loadLibraries())
+        let loadAction = ActionCreator.loadLibraries()
+        mainStore.dispatch(loadAction)
     }
     
     private func setupTableView(){
@@ -73,7 +74,8 @@ class LibraryListViewController: UIViewController, StoreSubscriber, UITableViewD
     
     private dynamic func tapReload(){
         print("tapReload")
-        mainStore.dispatch(ActionCreator.loadLibraries())
+        let loadAction = ActionCreator.loadLibraries()
+        mainStore.dispatch(loadAction)
     }
     
     override func didReceiveMemoryWarning() {
