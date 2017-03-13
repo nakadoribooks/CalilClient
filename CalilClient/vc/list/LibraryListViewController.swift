@@ -28,9 +28,7 @@ class LibraryListViewController: UIViewController, StoreSubscriber, UITableViewD
         setupFooterView()
         
         
-        ActionCreator.loadLibraries().then { (action) -> Void in
-            mainStore.dispatch(action)
-        }
+        mainStore.dispatch(ActionCreator.loadLibraries())
         
         let loadAction = ActionCreator.loadLibrariesAction()
         mainStore.dispatch(loadAction)
@@ -81,9 +79,7 @@ class LibraryListViewController: UIViewController, StoreSubscriber, UITableViewD
     private dynamic func tapReload(){
         print("tapReload")
         
-        ActionCreator.loadLibraries().then { (action) -> Void in
-            mainStore.dispatch(action)
-        }
+        mainStore.dispatch(ActionCreator.loadLibraries())
         
         let loadAction = ActionCreator.loadLibrariesAction()
         mainStore.dispatch(loadAction)

@@ -10,9 +10,25 @@ import ReSwift
 import Alamofire
 import PromiseKit
 
+public enum ActionCreatorError: Error {
+    case unknown
+    case json
+}
+
 struct ActionCreator{
     
-    static func loadLibraries(prefName:String="秋田県")-> Promise<Action>{
+    static func loadLibraries(prefName:String="秋田県")->Store<AppState>.AsyncActionCreator {
+        return { (state, store, callback) in
+            _loadLibraries(prefName: prefName).then(execute: { (action) -> Void in
+                callback({ (_, _) -> Action? in action })
+            }).catch(execute: { (error) in
+                let failAction = LibraryListFailLoadAction()
+                callback({ (_, _) -> Action? in failAction })
+            })
+        }
+    }
+    
+    static func _loadLibraries(prefName:String="秋田県")-> Promise<Action>{
         
         return Promise { fulfill, reject in
             
@@ -23,8 +39,7 @@ struct ActionCreator{
                 guard let json = responseAny as? [NSDictionary] else{
                     print("fail json")
                     
-                    let failAction = LibraryListFailLoadAction()
-                    fulfill(failAction)
+                    reject(ActionCreatorError.json)
                     return
                 }
                 
@@ -41,8 +56,7 @@ struct ActionCreator{
                 }
                 
             }.catch { error in
-                let failAction = LibraryListFailLoadAction()
-                fulfill(failAction)
+                reject(ActionCreatorError.unknown)
             }
             
         }
